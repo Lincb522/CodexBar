@@ -254,7 +254,7 @@ private struct ProviderDetailInfoGrid: View {
             if let status {
                 ProviderDetailInfoRow(
                     label: String(localized: "Status"),
-                    value: status.description ?? status.indicator.label,
+                    value: ProviderStatusText.localizedDescription(status.description) ?? status.indicator.label,
                     labelWidth: self.labelWidth)
             }
 

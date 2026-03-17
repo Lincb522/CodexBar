@@ -28,6 +28,33 @@ enum ProviderStatusIndicator: String {
     }
 }
 
+enum ProviderStatusText {
+    static func localizedDescription(_ description: String?) -> String? {
+        guard let raw = description?.trimmingCharacters(in: .whitespacesAndNewlines), !raw.isEmpty else {
+            return nil
+        }
+
+        switch raw.lowercased() {
+        case "operational":
+            return String(localized: "Operational")
+        case "partial outage":
+            return String(localized: "Partial outage")
+        case "partially degraded", "partially degraded service":
+            return String(localized: "Partially Degraded")
+        case "major outage":
+            return String(localized: "Major outage")
+        case "critical issue":
+            return String(localized: "Critical issue")
+        case "maintenance":
+            return String(localized: "Maintenance")
+        case "status unknown":
+            return String(localized: "Status unknown")
+        default:
+            return raw
+        }
+    }
+}
+
 struct ProviderStatus {
     let indicator: ProviderStatusIndicator
     let description: String?

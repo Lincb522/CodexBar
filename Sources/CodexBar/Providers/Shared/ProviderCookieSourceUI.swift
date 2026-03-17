@@ -1,4 +1,5 @@
 import CodexBarCore
+import Foundation
 
 enum ProviderCookieSourceUI {
     static let keychainDisabledPrefix =
@@ -40,5 +41,15 @@ enum ProviderCookieSourceUI {
         case .off:
             return off
         }
+    }
+
+    @MainActor
+    static func cachedTrailingText(provider: UsageProvider) -> String? {
+        guard let entry = CookieHeaderCache.load(provider: provider) else { return nil }
+        let when = entry.storedAt.relativeDescription()
+        return String.localizedStringWithFormat(
+            String(localized: "Cached: %@ • %@"),
+            entry.sourceLabel,
+            when)
     }
 }

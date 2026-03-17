@@ -327,7 +327,9 @@ struct MenuDescriptor {
             } else {
                 let loginAction = self.switchAccountTarget(for: provider, store: store)
                 let hasAccount = self.hasAccount(for: provider, store: store, account: account)
-                let accountLabel = hasAccount ? String(localized: "Switch Account...") : String(localized: "Add Account...")
+                let accountLabel = hasAccount
+                    ? String(localized: "Switch Account...")
+                    : String(localized: "Add Account...")
                 entries.append(.action(accountLabel, loginAction))
             }
         }
@@ -375,8 +377,7 @@ struct MenuDescriptor {
               let status = store.status(for: target),
               status.indicator != .none else { return nil }
 
-        let description = status.description?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let label = description?.isEmpty == false ? description! : status.indicator.label
+        let label = ProviderStatusText.localizedDescription(status.description) ?? status.indicator.label
         if let updated = status.updatedAt {
             let freshness = UsageFormatter.updatedString(from: updated)
             return "\(label) — \(freshness)"

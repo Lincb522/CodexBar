@@ -88,11 +88,7 @@ struct MiniMaxProviderImplementation: ProviderImplementation {
                 options: cookieOptions,
                 isVisible: { authMode().allowsCookies },
                 onChange: nil,
-                trailingText: {
-                    guard let entry = CookieHeaderCache.load(provider: .minimax) else { return nil }
-                    let when = entry.storedAt.relativeDescription()
-                    return "Cached: \(entry.sourceLabel) • \(when)"
-                }),
+                trailingText: { ProviderCookieSourceUI.cachedTrailingText(provider: .minimax) }),
             ProviderSettingsPickerDescriptor(
                 id: "minimax-region",
                 title: String(localized: "API region"),

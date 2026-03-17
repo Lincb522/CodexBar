@@ -138,9 +138,14 @@ struct ClaudeProviderImplementation: ProviderImplementation {
         }
         let keychainPromptPolicySubtitle: () -> String? = {
             if context.settings.debugDisableKeychainAccess {
-                return String(localized: "Global Keychain access is disabled in Advanced, so this setting is currently inactive.")
+                return String(
+                    localized: "Global Keychain access is disabled in Advanced, so this setting is currently inactive.")
             }
-            return String(localized: "Controls Claude OAuth Keychain prompts when experimental reader mode is off. Choosing \"Never prompt\" can make OAuth unavailable; use Web/CLI when needed.")
+            return String(
+                localized: """
+                    Controls Claude OAuth Keychain prompts when experimental reader mode is off. \
+                    Choosing "Never prompt" can make OAuth unavailable; use Web/CLI when needed.
+                    """)
         }
 
         return [
@@ -176,11 +181,7 @@ struct ClaudeProviderImplementation: ProviderImplementation {
                 options: cookieOptions,
                 isVisible: nil,
                 onChange: nil,
-                trailingText: {
-                    guard let entry = CookieHeaderCache.load(provider: .claude) else { return nil }
-                    let when = entry.storedAt.relativeDescription()
-                    return "Cached: \(entry.sourceLabel) • \(when)"
-                }),
+                trailingText: { ProviderCookieSourceUI.cachedTrailingText(provider: .claude) }),
         ]
     }
 
@@ -208,7 +209,12 @@ struct ClaudeProviderImplementation: ProviderImplementation {
         {
             let used = UsageFormatter.currencyString(cost.used, currencyCode: cost.currencyCode)
             let limit = UsageFormatter.currencyString(cost.limit, currencyCode: cost.currencyCode)
-            entries.append(.text(String(localized: "Extra usage: \(used) / \(limit)"), .primary))
+            entries.append(.text(
+                String.localizedStringWithFormat(
+                    String(localized: "Extra usage: %@ / %@"),
+                    used,
+                    limit),
+                .primary))
         }
     }
 

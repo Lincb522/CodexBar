@@ -24285,6 +24285,116 @@
           }
         }
       }
+    },
+    "Cached: %@ • %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cached: %@ • %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已缓存：%@ • %@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已快取：%@ • %@"
+          }
+        }
+      }
+    },
+    "Extra usage: %@ / %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extra usage: %@ / %@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "额外用量：%@ / %@"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "額外用量：%@ / %@"
+          }
+        }
+      }
+    },
+    "≈ %@%% run-out risk": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ %@%% run-out risk"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "约 %@%% 用尽风险"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "約 %@%% 用盡風險"
+          }
+        }
+      }
+    },
+    "Controls Claude OAuth Keychain prompts when experimental reader mode is off. Choosing \"Never prompt\" can make OAuth unavailable; use Web/CLI when needed.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Controls Claude OAuth Keychain prompts when experimental reader mode is off. Choosing \"Never prompt\" can make OAuth unavailable; use Web/CLI when needed."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在关闭实验性读取模式时控制 Claude OAuth 钥匙串提示。选择“从不提示”可能导致 OAuth 不可用；需要时请改用 Web/CLI。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在關閉實驗性讀取模式時控制 Claude OAuth 鑰匙圈提示。選擇「從不提示」可能導致 OAuth 無法使用；需要時請改用 Web/CLI。"
+          }
+        }
+      }
+    },
+    "Partially Degraded": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partially Degraded"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分降级"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "部分降級"
+          }
+        }
+      }
     }
   }
 }

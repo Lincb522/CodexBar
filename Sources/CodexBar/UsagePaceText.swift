@@ -51,7 +51,9 @@ enum UsagePaceText {
 
         guard let runOutProbability = pace.runOutProbability else { return etaLabel }
         let roundedRisk = self.roundedRiskPercent(runOutProbability)
-        let riskLabel = String(localized: "≈ \(roundedRisk)% run-out risk")
+        let riskLabel = String.localizedStringWithFormat(
+            String(localized: "≈ %@%% run-out risk"),
+            String(roundedRisk))
         if let etaLabel {
             return "\(etaLabel) · \(riskLabel)"
         }

@@ -74,7 +74,8 @@ struct CodexProviderImplementation: ProviderImplementation {
             ProviderSettingsToggleDescriptor(
                 id: "codex-historical-tracking",
                 title: String(localized: "Historical tracking"),
-                subtitle: String(localized: "Stores local Codex usage history (8 weeks) to personalize Pace predictions."),
+                subtitle: String(
+                    localized: "Stores local Codex usage history (8 weeks) to personalize Pace predictions."),
                 binding: context.boolBinding(\.historicalTrackingEnabled),
                 statusText: nil,
                 actions: [],
@@ -148,11 +149,7 @@ struct CodexProviderImplementation: ProviderImplementation {
                 options: cookieOptions,
                 isVisible: { context.settings.openAIWebAccessEnabled },
                 onChange: nil,
-                trailingText: {
-                    guard let entry = CookieHeaderCache.load(provider: .codex) else { return nil }
-                    let when = entry.storedAt.relativeDescription()
-                    return "Cached: \(entry.sourceLabel) • \(when)"
-                }),
+                trailingText: { ProviderCookieSourceUI.cachedTrailingText(provider: .codex) }),
         ]
     }
 
@@ -181,9 +178,13 @@ struct CodexProviderImplementation: ProviderImplementation {
         else { return }
 
         if let credits = context.store.credits {
-            entries.append(.text(String(localized: "Credits: \(UsageFormatter.creditsString(from: credits.remaining))"), .primary))
+            entries.append(.text(
+                String(localized: "Credits: \(UsageFormatter.creditsString(from: credits.remaining))"),
+                .primary))
             if let latest = credits.events.first {
-                entries.append(.text(String(localized: "Last spend: \(UsageFormatter.creditEventSummary(latest))"), .secondary))
+                entries.append(.text(
+                    String(localized: "Last spend: \(UsageFormatter.creditEventSummary(latest))"),
+                    .secondary))
             }
         } else {
             let hint = context.store.lastCreditsError ?? context.metadata.creditsHint
